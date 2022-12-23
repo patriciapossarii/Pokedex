@@ -1,151 +1,73 @@
 
-import {
-    Box,
-    Center,
-    useColorModeValue,
-    Heading,
-    Text,
-    Stack,
-    Image,
-    color,
-    Flex,
-    Button,
-    Link,
-    Container
-} from '@chakra-ui/react';
+
 import axios from "axios"
 import { useState, useEffect } from 'react';
 import pokelogo from "../../assets/pokeLog.png"
 import { BASE_URL } from '../../constants/url';
 import { getTypes } from "../../utils/ReturnPokemonType"
 import { getColors } from '../../utils/ReturnCardColor';
-
-
+import { PokemonName } from './PokemonCard-Styled';
+import {
+    Container, PokemonNumber, TypesContainer, PokemonType, Pokemon,
+    CatchButton, Pokeball
+} from "./PokemonCard-Styled";
+import { Box, Link } from "@chakra-ui/react";
+import { goToPokemonDetailPage } from "../../Router/coordinator";
+import { useNavigate } from 'react-router-dom';
 
 
 
 export const PokemonCard = (props) => {
     const { pokemon } = props
     const [pokemonsTypes, setPokemonsTypes] = useState([])
-
+    const navigate = useNavigate()
     const idSplitUrl = pokemon.url.split("/")
     let idPokemon = idSplitUrl[idSplitUrl.length - 2]
 
     const IMAGE = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${idPokemon}.png`
 
 
-
-
-
     const fetchPokemonType = () => {
         axios.get(`${BASE_URL}api/v2/pokemon/${idPokemon}`)
             .then((resp) => {
                 setPokemonsTypes(resp.data.types)
-
             })
             .catch((error) => {
                 console.log(error)
             })
     }
 
-
     useEffect(() => {
         fetchPokemonType()
-
     }, [])
 
-
-
-    {
-        pokemonsTypes.map((pokemonType, index) => {
-
-            return <Box key={index} cardcolor={getColors(pokemonType.type.name[0])}
-            />
-        })
-    }
-
-
-    /*let colorCard = getColors(pokemonsTypes[0].type.name)*/
-    let colorCard = "green"
+    let cardColor = getColors(pokemonsTypes[0]?.type?.name)
 
     return (
-        <Center  >
-            <Text position={"absolute"} width={"420px"} height={"72px"} left={"40px"} top={"60px"}
-                fontFamily={"Poppins"} fontStyle={"normal"} fontWeight={"700"} fontSize={"48px"} lineHeight={"72px"} color={"#FFFFFF"}
-            >
-                Todos Pokémons </Text>
+        <Container color={cardColor} >
+            <div>
+                <PokemonNumber>  #{idPokemon}</PokemonNumber>
+                <PokemonName>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</PokemonName>
 
+                <TypesContainer>
+                    {pokemonsTypes.map((pokemonType, index) => {
+                        return <PokemonType key={index} src={getTypes(pokemonType.type.name)} />;
+                    })}
+                </TypesContainer>
+                
+                    <Link onClick={() => goToPokemonDetailPage(navigate, idPokemon)}>Detalhes</Link>
+                
+            </div>
 
-            <Box
-                marginTop={"187px"}
-                w={'440px'}
-                h={'210px'}
-                cursor="pointer"
-                bg={colorCard}
-                boxShadow={'2xl'}
-                borderRadius={"12px"}
-            >
-                <Container display={"flex"}>
-                    <Image
-                        position={"absolute"}
-                        h={"193px"}
-                        w={"193px"}
-                        marginLeft={"236px"}
-                        marginTop={"-53px"}
-                        src={IMAGE}
+            <div>
+                <Pokemon src={IMAGE} />
+                <CatchButton >Capturar!</CatchButton>
+            </div>
 
-                    />
-                    <Image
-                    position={"relative"}
-                        h={"210.73px"}
-                        w={"210.73px"}
-                        top={"-62px"}
-                        left={"294.37px"}
-                        src={pokelogo}
-                        
-                    />
+            <Pokeball src={pokelogo} alt="pokeball" />
+        </Container>
 
 
 
-                </Container>
-
-
-                <Stack >
-                    <Text
-                        w={"32px"} h={"19px"} left={"23px"} top={"25px"}
-                        fontFamily={"Inter"} fontStyle={"normal"} fontWeight={"700"} fontSize={"16px"} lineHeight={"19px"} color={"#FFFFFF"}>
-                        #{idPokemon}
-                    </Text>
-
-                    <Text
-                        w={"159px"} h={"39px"} left={"23px"} top={"40px"}
-                        fontFamily={"Inter"} fontStyle={"normal"} fontWeight={"700"} fontSize={"32px"} lineHeight={"39px"} color={"#FFFFFF"} >
-                        {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
-                    </Text>
-
-                    <Box display={"flex"} flexDirection="row" alignItems={"flex-start"} padding={("5px", "8px")} gap={"17px"}
-                        width={"99px"} height={"31px"} left={"23px"} top={"89px"}>
-                        {pokemonsTypes.map((pokemonType, index) => {
-                            return <Image key={index} src={getTypes(pokemonType.type.name)} />
-                        })
-                        }
-                    </Box>
-
-
-                    <Link width={"74px"} height={"24px"}
-                        fontFamily={"Poppins"} fontStyle={"normal"} fontWeight={"700px"} fontSize={"16px"} lineHeight={"24px"} textDecorationLine={"underline"}
-                        color={"#FFFFFF"} >
-                        Detalhes
-                    </Link>
-
-
-                    <Button display={"flex"} flexDirection={"row"} justifyContent={"center"} alignItems={"center"} padding={("4px", "10px")}
-                        w={"146px"} h={"38px"} bg={" #FFFFFF"}>
-                        Capturar!
-                    </Button>
-
-                </Stack>
-            </Box>
-        </Center>
     );
 }
