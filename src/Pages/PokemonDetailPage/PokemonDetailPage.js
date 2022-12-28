@@ -120,6 +120,8 @@ const PokemonDetailPage = () => {
                         <Text fontFamily={"Inter"} fontStyle={"normal"} fontSize={"24px"} lineHeight={"29px"}>Base stats</Text>
 
                         <Flex display={"flex"} direction={"row"} marginTop={"45px"} >
+                        {pokemonsStats.map((pokemonStat,index)=>{})}
+                            
                             <Stack w={"70px"} spacing={4}>
                                 <p size='lg'>HP</p>
                                 <p size='lg'>Attack</p>
@@ -129,6 +131,7 @@ const PokemonDetailPage = () => {
                                 <p>Speed</p>
                                 <p> Total </p>
                             </Stack>
+                            
                             <Stack w={"45px"} spacing={4}>
                                 <p>{pokemonsStats[0]?.base_stat}</p>
                                 <p>{pokemonsStats[1]?.base_stat}</p>
@@ -138,6 +141,7 @@ const PokemonDetailPage = () => {
                                 <p>{pokemonsStats[5]?.base_stat}</p>
                                 <p><b>{sumStats}</b></p>
                             </Stack>
+
                             <Stack spacing={7} w={"170px"} bg={"white"} >
                                 <Progress colorScheme={pokemonsStats[0]?.base_stat > 50 ? "yellow" : "orange"} value={pokemonsStats[0]?.base_stat} borderRadius={"4px"} bg={"white"} />
                                 <Progress colorScheme={pokemonsStats[1]?.base_stat > 50 ? "yellow" : "orange"} value={pokemonsStats[1]?.base_stat} borderRadius={"4px"} bg={"white"} />
