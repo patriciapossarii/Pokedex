@@ -8,37 +8,25 @@ import {
     Text,
     Box
 } from "@chakra-ui/react"
-
+import { useContext } from "react";
 import axios from "axios"
+import { GlobalContext } from "../../contexts/GlobalContext"
+import { addScaleCorrector } from "framer-motion"
 
 
 const PokemonListPage = () => {
 
-
-    const [pokemons, setPokemons] = useState([])
-
-
-
-
-    const fetchAllPokemons = () => {
-        axios.get(`${BASE_URL}api/v2/pokemon?limit=20`)
-            .then((resp) => {
-                console.log("results", resp.data.results)
-                setPokemons(resp.data.results)
-
-            })
-            .catch((error) => {
-                console.log(error)
-            })
-    }
-
-    useEffect(() => {
-        fetchAllPokemons()
-
-    }, [])
-
-
-
+    const context = useContext(GlobalContext)
+    const { pokelist, addToPokedex, pokedex, setIdPokemon, idPokemon } = context; //desestrutura o GlobalContent o que desejo usar
+  
+    // não mostrar pokemons que estão na pokedex
+    const filteredPokelist = () =>
+      pokelist.filter((pokemonInList) =>
+          !pokedex.find((pokemonInPokedex) => 
+          pokemonInList.name === pokemonInPokedex.name
+          )
+      );
+    
     return (
         <div>
             <Header
@@ -46,9 +34,15 @@ const PokemonListPage = () => {
             Hi! I'm PokemonListPage
             <Flex display={"flex"} alignItems="flex-start" gap={"20px"} wrap={"wrap"}
             bg={"#5E5E5E"}>
-                {pokemons.map((pokemon, index) => {
-                    return <PokemonCard key={index} pokemon={pokemon} />
-                })}
+              {filteredPokelist().map((pokemon) => (
+                                 <PokemonCard 
+                                 
+                                    key={pokemon.url}
+                                    
+                    pokemonUrl={pokemon.url}
+                    addToPokedex={addToPokedex}
+                  />)
+                  )}
             </Flex>
         </div>
     )
