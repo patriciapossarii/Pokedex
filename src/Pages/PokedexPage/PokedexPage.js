@@ -34,15 +34,17 @@ const PokedexPage = () => {
         <div>
             <Header isOnPokedexPage={true} />
             Hi! I'm PokedexPage
-
+            <Flex display={"flex"} alignItems="flex-start" gap={"20px"} wrap={"wrap"}
+            bg={"#5E5E5E"}>
 
             {pokedex.map((pokemon) => (
                 <PokemonCard
                     key={pokemon.name}
                     pokemonUrl={BASE_URL.concat(pokemon.id)}
+                    removeFromPokedex={removeFromPokedex}
                 />
             ))}
-
+</Flex>
         </div>
     )
 }

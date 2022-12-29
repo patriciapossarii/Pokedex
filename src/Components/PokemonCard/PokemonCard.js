@@ -8,7 +8,7 @@ import { getColors } from '../../utils/ReturnCardColor';
 import { PokemonName } from './PokemonCard-Styled';
 import {
     Container, PokemonNumber, TypesContainer, PokemonType, Pokemon,
-    CatchButton, Pokeball
+    CatchButton, Pokeball,RemoveButton
 } from "./PokemonCard-Styled";
 import { Box, Link, Modal, ModalOverlay, ModalContent, ModalCloseButton, ModalBody, ModalHeader } from "@chakra-ui/react";
 import { goToPokemonDetailPage } from "../../Router/coordinator";
@@ -102,9 +102,9 @@ export const PokemonCard = (props) => {
                         Capturar!
                     </CatchButton>
                 ) : (
-                    <button onClick={() => removeFromPokedex(pokemon)}>
-                        Remover da Pokedex
-                    </button>
+                    <RemoveButton onClick={() => removeFromPokedex(pokemon)}>
+                       Excluir
+                    </RemoveButton>
                 )}
 
 

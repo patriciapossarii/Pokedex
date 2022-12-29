@@ -23,7 +23,6 @@ const PokemonDetailPage = () => {
 
 
 
-
     const IMAGE = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${idPokemon}.png`
 
     const imagePokemonBack = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/${idPokemon}.png`
@@ -32,20 +31,21 @@ const PokemonDetailPage = () => {
 
 
     const fetchPokemonType = () => {
-        axios.get(`${BASE_URL}api/v2/pokemon/${idPokemon}`)
+        axios.get(`${BASE_URL}${idPokemon}`)
             .then((resp) => {
                 setPokemonsTypes(resp.data.types)
                 setPokemonsStats(resp.data.stats)
 
                 setPokemonsMoves(resp.data.moves)
+
+                console.log(resp.data.types)
             })
             .catch((error) => {
                 console.log(error)
             })
     }
 
-    //console.log("Movimentos", pokemonsMoves[1]?.move?.name.replace(/-/, " ").charAt(0).toUpperCase() + pokemonsMoves[1]?.move?.name.replace(/-/, " ").slice(1).split(' ').join(' '))
-    //console.log("nome atake", pokemonsStats[1].stat.name ,"valor atak", pokemonsStats[0].base_stat)
+   
 
 
     let moviments = []
