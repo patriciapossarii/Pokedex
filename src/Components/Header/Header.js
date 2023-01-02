@@ -11,15 +11,15 @@ import { ModalPage } from "../Modal/modal";
 
 
 const Header = (props) => {
-  const { isOnPokedexPage, isOnPokemonDetailPage, isOnPokemonListPage } = props
+  const { isOnPokedexPage, isOnPokemonDetailPage, isOnPokemonListPage ,pokemon} = props
   const navigate = useNavigate()
 
 
   const context = useContext(GlobalContext)
-  const { pokedex, removeFromPokedex, pokemon,isOpen, isOpenDel } = context;
+  const { removeFromPokedex, isOpen, setIsOpenDel, isOpenDel } = context;
 
-  
 
+console.log("pokemon",pokemon)
 
   return (
 
@@ -96,13 +96,17 @@ const Header = (props) => {
               w={"226px"} h={"57px"}
               marginTop={"51px"} marginLeft={"1174px"}
               fontSize={"24px"}
-              onClick={() => removeFromPokedex(pokemon)} >Excluir da Pokédex</Button>
+              
+              onClick={() => {
+                removeFromPokedex(pokemon)
+                setIsOpenDel(true)
+                console.log(pokemon)}} >Excluir da Pokédex</Button>
 
-
+{isOpenDel ? <ModalPage></ModalPage> : <></>}
           </Box>
 
         </Flex>}
-        {isOpen ? <ModalPage></ModalPage> : <></>}
+      {isOpen ? <ModalPage></ModalPage> : <></>}
     </Flex>
   )
 }

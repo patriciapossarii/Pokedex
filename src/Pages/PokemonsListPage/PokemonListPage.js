@@ -12,7 +12,7 @@ import { GlobalContext } from "../../contexts/GlobalContext"
 const PokemonListPage = () => {
 
     const context = useContext(GlobalContext)
-    const { pokelist, addToPokedex, pokedex } = context;
+    const { pokelist, addToPokedex, pokedex} = context;
 
 
     const filteredPokelist = () =>

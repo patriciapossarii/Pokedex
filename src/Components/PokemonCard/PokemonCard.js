@@ -26,7 +26,7 @@ import {
 } from "@chakra-ui/react";
 import { goToPokemonDetailPage } from "../../Router/coordinator";
 
-import {  Flex } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { GlobalContext } from "../../contexts/GlobalContext";
@@ -38,10 +38,10 @@ export const PokemonCard = (props) => {
     const navigate = useNavigate();
     const [pokemon, setPokemon] = useState({});
     const [pokemonsTypes, setPokemonsTypes] = useState([])
-    
-    const context = useContext(GlobalContext)
 
-    const {isOpen, isOpenDel,  setIsOpen, setIsOpenDel } = context;
+    const context = useContext(GlobalContext)
+  
+    const {  setIsOpen, setIsOpenDel, } = context;
 
     let url = pokemonUrl
     if (url.endsWith("/")) {
@@ -57,6 +57,7 @@ export const PokemonCard = (props) => {
         try {
             const response = await axios.get(url);
             setPokemon(response.data);
+  
         } catch (error) {
             console.log("Erro ao buscar lista de pokemons");
             console.log(error);
@@ -113,7 +114,6 @@ export const PokemonCard = (props) => {
                         <CatchButton onClick={() => {
                             addToPokedex(pokemon)
                             setIsOpen(true)
-                            console.log("is open",isOpen)
                         }}>
                             Capturar!
                         </CatchButton>
@@ -122,9 +122,10 @@ export const PokemonCard = (props) => {
                         (<RemoveButton onClick={() => {
                             removeFromPokedex(pokemon)
                             setIsOpenDel(true)
-                            console.log("is open Del",isOpenDel)
+                            console.log(pokemon)
                         }}>
                             Excluir
+                        
                         </RemoveButton>
                         )}
 

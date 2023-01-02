@@ -126,7 +126,7 @@ color: #FFFFFF;
 
 export const PokemonName = styled.p`
 
-width: 238px;
+width: 280px;
 height: 58px;
 left: 771px;
 top: 39px;

@@ -20,8 +20,8 @@ const PokemonDetailPage = () => {
     const { idPokemon } = useParams()
     const [pokemonsStats, setPokemonsStats] = useState([])
     const [pokemonsMoves, setPokemonsMoves] = useState([])
-
-
+    const [pokemon, setPokemon] = useState({});
+ 
 
     const IMAGE = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${idPokemon}.png`
 
@@ -35,9 +35,8 @@ const PokemonDetailPage = () => {
             .then((resp) => {
                 setPokemonsTypes(resp.data.types)
                 setPokemonsStats(resp.data.stats)
-
+              setPokemon (resp.data)
                 setPokemonsMoves(resp.data.moves)
-
                 console.log(resp.data.types)
             })
             .catch((error) => {
@@ -45,7 +44,7 @@ const PokemonDetailPage = () => {
             })
     }
 
-   
+
 
 
     let moviments = []
@@ -81,14 +80,16 @@ const PokemonDetailPage = () => {
 
 
 
-
+console.log("Pokemonnnnn", pokemon)
 
     return (
 
 
         <div>
             <Header
-                isOnPokemonDetailPage={true} />
+                isOnPokemonDetailPage={true}
+                pokemon = {pokemon}
+            />
             <Flex bgImg={pokelogo} bg={"#5E5E5E"} bgPosition={"bottom"}
                 minH={"1174px"}
                 display={"flex"} alignItems={"center"} justifyContent={"center"}>
@@ -120,8 +121,8 @@ const PokemonDetailPage = () => {
                         <Text fontFamily={"Inter"} fontStyle={"normal"} fontSize={"24px"} lineHeight={"29px"}>Base stats</Text>
 
                         <Flex display={"flex"} direction={"row"} marginTop={"45px"} >
-                        {pokemonsStats.map((pokemonStat,index)=>{})}
-                            
+                            {pokemonsStats.map((pokemonStat, index) => { })}
+
                             <Stack w={"70px"} spacing={4}>
                                 <p size='lg'>HP</p>
                                 <p size='lg'>Attack</p>
@@ -131,7 +132,7 @@ const PokemonDetailPage = () => {
                                 <p>Speed</p>
                                 <p> Total </p>
                             </Stack>
-                            
+
                             <Stack w={"45px"} spacing={4}>
                                 <p>{pokemonsStats[0]?.base_stat}</p>
                                 <p>{pokemonsStats[1]?.base_stat}</p>

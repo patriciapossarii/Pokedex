@@ -12,6 +12,7 @@ export default function App() {
   const [idPokemon, setIdPokemon] = useState([])
   const [isOpen, setIsOpen] = useState(false)
   const [isOpenDel, setIsOpenDel] = useState(false)
+
     
 
 
@@ -45,6 +46,7 @@ export default function App() {
 
 
   const removeFromPokedex = (pokemonToRemove) => {
+    console.log("aaaaaaaaaaa", pokemonToRemove)
     const newPokedex = pokedex.filter(
       (pokemonInPokedex) => pokemonInPokedex.name !== pokemonToRemove.name
     );
@@ -53,8 +55,10 @@ export default function App() {
 
   const context = {
     pokedex,
+    
     pokelist,
     idPokemon,
+ 
     setPokedex,
     setPokelist,
     setIdPokemon,
@@ -62,6 +66,8 @@ export default function App() {
     addToPokedex,
     removeFromPokedex,
     isOpen, setIsOpen, isOpenDel, setIsOpenDel 
+    ,
+    
   }
 
 
