@@ -10,7 +10,9 @@ export default function App() {
   const [pokelist, setPokelist] = useState([]);
   const [pokedex, setPokedex] = useState([]);
   const [idPokemon, setIdPokemon] = useState([])
-
+  const [isOpen, setIsOpen] = useState(false)
+  const [isOpenDel, setIsOpenDel] = useState(false)
+    
 
 
   useEffect(() => {
@@ -59,6 +61,7 @@ export default function App() {
     fetchPokelist,
     addToPokedex,
     removeFromPokedex,
+    isOpen, setIsOpen, isOpenDel, setIsOpenDel 
   }
 
 
