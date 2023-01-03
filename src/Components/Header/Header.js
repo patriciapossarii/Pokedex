@@ -1,17 +1,15 @@
 import logotipo from "../../assets/logo.svg";
 import goBack from "../../assets/buttonGoBack.svg"
-import { Image, Box, Flex, Button, Heading, Spacer, ButtonGroup, Link, Divider } from '@chakra-ui/react'
+import { Image, Box, Flex, Button, Heading, Link, } from '@chakra-ui/react'
 import { goToPokedexPage, goToPokemonsListPage } from "../../Router/coordinator";
 import { useNavigate } from "react-router-dom";
 import { GlobalContext } from "../../contexts/GlobalContext"
 import { useContext } from "react";
-import { PokemonCard } from "../PokemonCard/PokemonCard";
-import { BASE_URL } from "../../constants/url";
 import { ModalPage } from "../Modal/modal";
 
 
 const Header = (props) => {
-  const { isOnPokedexPage, isOnPokemonDetailPage, isOnPokemonListPage ,pokemon} = props
+  const { isOnPokedexPage, isOnPokemonDetailPage, isOnPokemonListPage, pokemon, isOnPageDontFound } = props
   const navigate = useNavigate()
 
 
@@ -19,7 +17,7 @@ const Header = (props) => {
   const { removeFromPokedex, isOpen, setIsOpenDel, isOpenDel } = context;
 
 
-console.log("pokemon",pokemon)
+ 
 
   return (
 
@@ -47,17 +45,53 @@ console.log("pokemon",pokemon)
         </Flex>}
 
 
+      {isOnPageDontFound &&
+        <Flex display={"flex"} justifyItems={"center"} alignItems={'center'} h={"160px"}>
+          <Box>
+            <Image
+              position={"absolute"}
+              src={logotipo} w={"307px"} h={"113px"}
+              top={"21px"} left={"566px"} />
+
+          </Box>
+          <Box>
+          <Image src={goBack}
+            position={"absolute"}
+            left={"40px"} right={"37.54%"}
+            top={"110px"} bottom={"20.83%"}></Image>
+          <Link onClick={() => goToPokemonsListPage(navigate)}
+            position={"absolute"}
+            w={"210px"} h={"36px"}
+            left={"62px"} top={"100px"}
+            fontFamily={"Poppins"} fontStyle={"normal"}
+            fontWeight={"700"} fontSize={"24px"}
+            lineHeight={"36px"}
+            textDecorationLine={"underline"}
+          >
+            Todos Pokémons</Link>
+          </Box>
+        </Flex>}
+
+
 
 
       {isOnPokedexPage &&
         <Flex flex={"row"} alignItems='center' w={"1440px"} h={"160px"}>
 
           <Image src={goBack}
-            w={"7.29px"} h={"14.58px"}
-            marginTop={"5.21px"} marginLeft={"8.33px"}></Image>
-          <Link onClick={() => goToPokemonsListPage(navigate)} fontSize={"24px"}
+            position={"absolute"}
+            left={"40px"} right={"37.54%"}
+            top={"110px"} bottom={"20.83%"}></Image>
+          <Link onClick={() => goToPokemonsListPage(navigate)}
+            position={"absolute"}
             w={"210px"} h={"36px"}
-            marginTop={"100px"} marginLeft={"62px"}>Todos Pokémons</Link>
+            left={"62px"} top={"100px"}
+            fontFamily={"Poppins"} fontStyle={"normal"}
+            fontWeight={"700"} fontSize={"24px"}
+            lineHeight={"36px"}
+            textDecorationLine={"underline"}
+          >
+            Todos Pokémons</Link>
 
 
           <Box >
@@ -75,13 +109,21 @@ console.log("pokemon",pokemon)
       {isOnPokemonDetailPage &&
         <Flex display={"flex"} alignItems='center' w={"1440px"} h={"160px"}>
           <Box>
-            <Image src={goBack}
-              w={"7.29px"} h={"14.58px"}
-              marginTop={"5.21px"} marginLeft={"8.33px"}></Image>
-            <Link onClick={() => goToPokemonsListPage(navigate)} fontSize={"24px"}
-              w={"210px"} h={"36px"}
-              marginTop={"100px"} marginLeft={"62px"}>Todos Pokémons</Link>
-          </Box>
+          <Image src={goBack}
+            position={"absolute"}
+            left={"40px"} right={"37.54%"}
+            top={"110px"} bottom={"20.83%"}></Image>
+          <Link onClick={() => goToPokemonsListPage(navigate)}
+            position={"absolute"}
+            w={"210px"} h={"36px"}
+            left={"62px"} top={"100px"}
+            fontFamily={"Poppins"} fontStyle={"normal"}
+            fontWeight={"700"} fontSize={"24px"}
+            lineHeight={"36px"}
+            textDecorationLine={"underline"}
+          >
+            Todos Pokémons</Link>
+            </Box>
 
           <Box>
             <Image
@@ -96,16 +138,19 @@ console.log("pokemon",pokemon)
               w={"226px"} h={"57px"}
               marginTop={"51px"} marginLeft={"1174px"}
               fontSize={"24px"}
-              
+
               onClick={() => {
                 removeFromPokedex(pokemon)
                 setIsOpenDel(true)
-                console.log(pokemon)}} >Excluir da Pokédex</Button>
+                console.log(pokemon)
+              }} >Excluir da Pokédex</Button>
 
-{isOpenDel ? <ModalPage></ModalPage> : <></>}
+            {isOpenDel ? <ModalPage></ModalPage> : <></>}
           </Box>
 
         </Flex>}
+
+
       {isOpen ? <ModalPage></ModalPage> : <></>}
     </Flex>
   )

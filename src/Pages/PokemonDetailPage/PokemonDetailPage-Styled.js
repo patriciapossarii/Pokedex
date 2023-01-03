@@ -11,10 +11,10 @@ export const ContainerPrincipal = styled.div`
 `;
 
 export const Containerpokes = styled.div`
-min-width: 282px;
-max-width: 282px;
-min-height: 282px;
-max-height: 282px;
+  min-width: 282px;
+  max-width: 282px;
+  min-height: 282px;
+  max-height: 282px;
   top: 160px;
   background: white;
   display:flex;
@@ -25,7 +25,7 @@ max-height: 282px;
 
 
 export const Container = styled.div`
- position: absolute;
+  position: absolute;
   min-width: 1389.14px;
   max-width: 1389.14px;
   min-height: 663px;
@@ -53,16 +53,16 @@ export const ContPokemonFront = styled.div`
   `;
 
 export const ContPokemonBack = styled.div`
-position: absolute;
-min-width: 282px;
-max-width: 282px;
-min-height: 282px;
-max-height: 282px;
-left:44px;
-top:355px;
-background-color: #FFFFFF;
-border: 2px solid #FFFFFF;
-border-radius: 8px;
+  position: absolute;
+  min-width: 282px;
+  max-width: 282px;
+  min-height: 282px;
+  max-height: 282px;
+  left:44px;
+  top:355px;
+  background-color: #FFFFFF;
+  border: 2px solid #FFFFFF;
+  border-radius: 8px;
  `;
 
 export const ContainerStats = styled.div`
@@ -109,23 +109,19 @@ export const ImgPokemonBack = styled.img`
  `;
 
 export const PokemonNumber = styled.p`
-
-width: 30px;
-height: 19px;
-left: 774px;
-margin-top: 24px;
-font-family: 'Inter';
-font-style: normal;
-font-weight: 700;
-font-size: 16px;
-line-height: 19px;
-
-color: #FFFFFF;
-
+  width: 30px;
+  height: 19px;
+  left: 774px;
+  margin-top: 24px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  color: #FFFFFF;
 `;
 
 export const PokemonName = styled.p`
-
 width: 280px;
 height: 58px;
 left: 771px;
@@ -135,9 +131,6 @@ font-style: normal;
 font-weight: 700;
 font-size: 48px;
 line-height: 58px;
-
-
-
 color: #FFFFFF;
 `;
 
@@ -148,7 +141,6 @@ export const PokemonType = styled.img`
   overflow: hidden;
   border: 1px dashed #ffffff;
   margin-right: 26px;
-
  `;
 
 export const TypesContainer = styled.div`
@@ -157,14 +149,11 @@ export const TypesContainer = styled.div`
   flex-direction: row;
 `;
 export const Pokeball = styled.img`
-position: static;
-width: 908.99px;
-height: 908.99px;
-left: 553.49px;
-top: -50px;
-
-
-
+  position: static;
+  width: 908.99px;
+  height: 908.99px;
+  left: 553.49px;
+  top: -50px;
 `;
 
 export const PokeballCard = styled.img`
@@ -178,24 +167,23 @@ export const Pokemon = styled.img`
   height: 270px;
   position: absolute;
   top: 316px;
-margin-left:35.14px
+  margin-left:35.14px
   right: 0;
   z-index: 2;
 `;
 
 
 export const TextPoke = styled.p`
-position: absolute;
-width: 220px;
-height: 72px;
-left: 40px;
-top: 220px;
-
-font-family: 'Poppins';
-font-style: normal;
-font-weight: 700;
-font-size: 48px;
-line-height: 72px;
-color: #FFFFFF;
+  position: absolute;
+  width: 220px;
+  height: 72px;
+  left: 40px;
+  top: 220px;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 72px;
+  color: #FFFFFF;
 `
 

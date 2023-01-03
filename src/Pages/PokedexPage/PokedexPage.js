@@ -10,13 +10,17 @@ import { ModalPage } from "../../Components/Modal/modal";
 
 const PokedexPage = () => {
     const context = useContext(GlobalContext)
-    const { pokedex, removeFromPokedex, isOpen, isOpenDel} = context;
+    const { pokedex, removeFromPokedex, isOpenDel} = context;
 
     return (
         <div>
            <Header isOnPokedexPage={true} />
-            Hi! I'm PokedexPage
-            <Flex display={"flex"} alignItems="flex-start" gap={"20px"} wrap={"wrap"}
+          
+           <Flex display={"flex"} 
+            alignItems={"center" }
+            justifyContent={"center"}
+           wrap={"wrap"}
+                height={"96%"}
                 bg={"#5E5E5E"}>
 
                 {pokedex.map((pokemon) => (

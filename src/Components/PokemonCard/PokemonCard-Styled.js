@@ -8,7 +8,7 @@ export const Container = styled.div`
   border-radius: 12px;
   display: flex;
   position: relative;
-  margin: 50px;
+  margin: 40px;
   color: #ffffff;
 
 

@@ -1,10 +1,9 @@
 import Router from "./Router/Router";
-import { ChakraProvider, Flex, Rou } from '@chakra-ui/react'
+import { ChakraProvider } from '@chakra-ui/react'
 import { GlobalContext } from "./contexts/GlobalContext";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { BASE_URL } from "./constants/url";
-
 
 export default function App() {
   const [pokelist, setPokelist] = useState([]);
@@ -12,9 +11,7 @@ export default function App() {
   const [idPokemon, setIdPokemon] = useState([])
   const [isOpen, setIsOpen] = useState(false)
   const [isOpenDel, setIsOpenDel] = useState(false)
-
-    
-
+  
 
   useEffect(() => {
     fetchPokelist();
@@ -32,8 +29,6 @@ export default function App() {
   };
 
 
-
-
   const addToPokedex = (pokemonToAdd) => {
     const isAlreadyOnPokedex = pokedex.find(
       (pokemonInPokedex) => pokemonInPokedex.name === pokemonToAdd.name
@@ -46,32 +41,29 @@ export default function App() {
 
 
   const removeFromPokedex = (pokemonToRemove) => {
-    console.log("aaaaaaaaaaa", pokemonToRemove)
-    const newPokedex = pokedex.filter(
+      const newPokedex = pokedex.filter(
       (pokemonInPokedex) => pokemonInPokedex.name !== pokemonToRemove.name
     );
     setPokedex(newPokedex);
   };
 
+
   const context = {
     pokedex,
-    
     pokelist,
     idPokemon,
- 
+    isOpen,
+    isOpenDel,
     setPokedex,
     setPokelist,
     setIdPokemon,
+    setIsOpen,
+    setIsOpenDel,
     fetchPokelist,
     addToPokedex,
     removeFromPokedex,
-    isOpen, setIsOpen, isOpenDel, setIsOpenDel 
-    ,
-    
+   
   }
-
-
-
 
 
   useEffect(() => {
@@ -81,6 +73,7 @@ export default function App() {
     }
   }, [pokedex])
 
+
   useEffect(() => {
     const pokedexGet = localStorage.getItem("pokedex")
     if (pokedexGet !== null) {
@@ -89,9 +82,9 @@ export default function App() {
     }
   }, [])
 
-  return (
 
-    <ChakraProvider resetCSS>
+  return (
+    <ChakraProvider resetCSS >
       <GlobalContext.Provider value={context}>
         <Router />
       </GlobalContext.Provider>

@@ -38,10 +38,11 @@ export const PokemonCard = (props) => {
     const navigate = useNavigate();
     const [pokemon, setPokemon] = useState({});
     const [pokemonsTypes, setPokemonsTypes] = useState([])
+    const [pokemonName, setPokemonName] = useState("")
 
     const context = useContext(GlobalContext)
-  
-    const {  setIsOpen, setIsOpenDel, } = context;
+
+    const { setIsOpen, setIsOpenDel, } = context;
 
     let url = pokemonUrl
     if (url.endsWith("/")) {
@@ -56,8 +57,9 @@ export const PokemonCard = (props) => {
     const fetchPokemon = async () => {
         try {
             const response = await axios.get(url);
-            setPokemon(response.data);
-  
+            setPokemon(response.data)
+            setPokemonName(response.data.name)
+
         } catch (error) {
             console.log("Erro ao buscar lista de pokemons");
             console.log(error);
@@ -91,11 +93,11 @@ export const PokemonCard = (props) => {
 
 
     return (
-        <Flex  >
+        <Flex >
             <Container color={getColors(pokemonsTypes[0]?.type?.name)} >
                 <div>
-                    <PokemonNumber>  #{idPokemon}</PokemonNumber>
-                    <PokemonName>{pokemon?.name?.charAt(0).toUpperCase() + pokemon?.name?.slice(1)}</PokemonName>
+                    <PokemonNumber>  # {idPokemon}</PokemonNumber>
+                    <PokemonName>{pokemonName?.charAt(0).toUpperCase() + pokemonName?.slice(1)}</PokemonName>
 
                     <TypesContainer>
                         {pokemonsTypes.map((pokemonType, index) => {
@@ -122,10 +124,9 @@ export const PokemonCard = (props) => {
                         (<RemoveButton onClick={() => {
                             removeFromPokedex(pokemon)
                             setIsOpenDel(true)
-                            console.log(pokemon)
                         }}>
                             Excluir
-                        
+
                         </RemoveButton>
                         )}
 

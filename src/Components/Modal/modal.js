@@ -21,15 +21,17 @@ export function ModalPage() {
             }}>
 
                 <ModalOverlay />
-                <ModalContent width={"451px"} height={"222px"}>
+                <ModalContent 
+                width={"451px"} height={"222px"} top={"30%"}>
                     {isOpen ?
                         <>
                             <ModalHeader
-                                position={"absolute"} width={"219.16px"} height={"72px"} left={"123px"} top={"61px"}
+                                position={"absolute"} width={"250px"} height={"72px"} 
+                                left={"103px"} top={"41px"}
                                 fontFamily={"Poppins"} fontStyle={"normal"} fontWeight={"700"}
                                 fontSize={"48px"} lineHeight={"72px"}>Gotcha!</ModalHeader>
                             <ModalBody
-                                position={"absolute"} width={"337px"} height={"24px"} left={"64px"} top={"133px"}
+                                position={"absolute"} width={"437px"} height={"24px"} left={"34px"} top={"123px"}
                                 fontFamily={"Poppins"} fontStyle={"normal"} fontWeight={"700"}
                                 fontSize={"16px"} lineHeight={"24px"}>
                                 O Pokémon foi adicionado a sua Pokédex
@@ -40,13 +42,14 @@ export function ModalPage() {
 
                         <>
                             <ModalHeader
-                                position={"absolute"} width={"219.16px"} height={"72px"} left={"123px"} top={"61px"}
+                                position={"absolute"} width={"250px"} height={"72px"} 
+                                left={"103px"} top={"41px"}
                                 fontFamily={"Poppins"} fontStyle={"normal"} fontWeight={"700"}
                                 fontSize={"48px"} lineHeight={"72px"}>Oh,no!</ModalHeader>
                             <ModalBody
-                                position={"absolute"} width={"337px"} height={"24px"} left={"64px"} top={"133px"}
-                                fontFamily={"Poppins"} fontStyle={"normal"} fontWeight={"700"}
-                                fontSize={"16px"} lineHeight={"24px"}>
+                               position={"absolute"} width={"437px"} height={"24px"} left={"34px"} top={"123px"}
+                               fontFamily={"Poppins"} fontStyle={"normal"} fontWeight={"700"}
+                               fontSize={"16px"} lineHeight={"24px"}>
                                 O Pokémon foi removido da sua Pokedéx
                             </ModalBody>
                         </>
