@@ -4,9 +4,7 @@ import Header from "../../Components/Header/Header"
 
 const NotFoundPage = () => {
 
-
     return (
-
         <div>
             <Header isOnPageDontFound={true}/>
             <Flex display={"flex"} flexDirection={"column"}
@@ -20,7 +18,6 @@ const NotFoundPage = () => {
                 > Oh,no! </Text><p> Página não encontrada</p>
                 <Image src={error404} marginTop={"70px"}/>
             </Flex>
-
         </div>
     )
 }

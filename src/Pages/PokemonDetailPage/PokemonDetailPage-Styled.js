@@ -122,7 +122,7 @@ export const PokemonNumber = styled.p`
 `;
 
 export const PokemonName = styled.p`
-width: 280px;
+width: 300px;
 height: 58px;
 left: 771px;
 top: 39px;
@@ -149,17 +149,24 @@ export const TypesContainer = styled.div`
   flex-direction: row;
 `;
 export const Pokeball = styled.img`
-  position: static;
-  width: 908.99px;
-  height: 908.99px;
-  left: 553.49px;
-  top: -50px;
+position:absolute;
+display:flex;
+align-items:center;
+justify-content:center;
+
+top: -50px;
+overflow: hidden;
+
+
 `;
 
 export const PokeballCard = styled.img`
-  position: absolute;
-  top: 0;
-  right: 0;
+position: absolute;
+width: 700px;
+height: 700px;
+margin-left:-120px;
+top: 400px;
+overflow: hidden;
 `;
 
 export const Pokemon = styled.img`
@@ -169,13 +176,12 @@ export const Pokemon = styled.img`
   top: 316px;
   margin-left:35.14px
   right: 0;
-  z-index: 2;
-`;
 
+`;
 
 export const TextPoke = styled.p`
   position: absolute;
-  width: 220px;
+  width: 250px;
   height: 72px;
   left: 40px;
   top: 220px;

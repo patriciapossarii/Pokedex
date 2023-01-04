@@ -1,5 +1,5 @@
 import Header from "../../Components/Header/Header"
-import { ImgPokemonFront, TextPoke, PokemonNumber, PokemonName, PokemonType, TypesContainer, Pokemon } from "./PokemonDetailPage-Styled"
+import { ImgPokemonFront, TextPoke, PokemonNumber, PokemonName, PokemonType, TypesContainer, Pokemon, PokeballCard, Pokeball } from "./PokemonDetailPage-Styled"
 import { BASE_URL } from "../../constants/url"
 import { useState, useEffect } from "react"
 import axios from "axios"
@@ -8,6 +8,7 @@ import pokelogo from "../../assets/pokeLogDetails.svg"
 import { Flex, Box, Progress, Stack, Text, } from "@chakra-ui/react"
 import { getTypes } from "../../utils/ReturnPokemonType"
 import { getColors } from "../../utils/ReturnCardColor"
+import pokecard from "../../assets/pngwing.svg"
 
 const PokemonDetailPage = () => {
     const [pokemonsTypes, setPokemonsTypes] = useState([])
@@ -64,23 +65,22 @@ const PokemonDetailPage = () => {
         fetchPokemonType()
     }, [])
 
-    
+
     return (
-
-
         <div>
             <Header
                 isOnPokemonDetailPage={true}
                 pokemon={pokemon}
             />
-            <Flex bgImg={pokelogo} bg={"#5E5E5E"} bgPosition={"bottom"}
+            <Flex bg={"#5E5E5E"} bgPosition={"bottom"}
                 minH={"1174px"} width={"100%"}
                 display={"flex"} alignItems={"center"} justifyContent={"center"}>
+                     <Pokeball src={pokelogo} />
                 <TextPoke>Detalhes</TextPoke>
 
                 <Flex display={"flex"} minW={"1389.14px"}
                     minH={"663px"} maxH={"663px"}
-                    marginTop={"188px"} marginLeft={"25px"} borderRadius={"37.8857px"}
+                    top={"56px"} marginLeft={"25px"} borderRadius={"37.8857px"}
                     bg={getColors(pokemonsTypes[0]?.type?.name)}
 
                 >
@@ -104,7 +104,7 @@ const PokemonDetailPage = () => {
                         <Text fontFamily={"Inter"} fontStyle={"normal"} fontSize={"24px"} lineHeight={"29px"}>Base stats</Text>
 
                         <Flex display={"flex"} direction={"row"} marginTop={"45px"} >
-                           
+
 
                             <Stack w={"70px"} spacing={4}>
                                 <p size='lg'>HP</p>
@@ -149,8 +149,9 @@ const PokemonDetailPage = () => {
                             </TypesContainer>
                         </Box>
 
-
-                        <Box w={"292px"} h={"453px"} bg={"#FFFFFF"} marginTop={"7px"} borderRadius={"8px"} >
+                        <PokeballCard src={pokecard} />
+                        <Box zIndex={"sticky"}  w={"292px"} h={"453px"} bg={"#FFFFFF"} marginTop={"7px"} borderRadius={"8px"} >
+                        
                             <Text w={"87px"} h={"29px"} marginLeft={"18px"} marginTop={"18px"}
                                 fontFamily={"Inter"} fontStyle={"normal"} fontWeight={"800"}
                                 fontSize={"24px"} lineHeight={"29px"}> Moves: </Text>
@@ -161,20 +162,21 @@ const PokemonDetailPage = () => {
                                     return <Box bg={"#ECECEC"} borderStyle={"dashed"} borderColor={"#dbdbdb"}
                                         borderWidth={"2px"} padding={"10px"} gap={"10px"} borderRadius={"12px"}>{moviment}
                                     </Box>
-                                })}
-                            </Flex>
-                        </Box>
 
+                                })}
+
+                            </Flex>
+
+                        </Box>
 
                     </Flex >
 
                     <Flex >
+                       
                         <Pokemon src={IMAGE} />
+                       
                     </Flex>
-
-
                 </Flex>
-
             </Flex>
         </div>
     )

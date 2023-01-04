@@ -19,14 +19,12 @@ const PokemonListPage = () => {
         <div>
             <Header
                 isOnPokemonListPage={true} />
-          
-            <Flex display={"flex"} 
-            alignItems={"center" }
-            justifyContent={"center"}
-            wrap={"wrap"}
+            <Flex display={"flex"}
+                alignItems={"center"}
+                justifyContent={"center"}
+                wrap={"wrap"}
                 height={"96%"}
                 bg={"#5E5E5E"}>
-
 
                 {filteredPokelist().map((pokemon) => (
                     <PokemonCard
@@ -34,7 +32,6 @@ const PokemonListPage = () => {
                         pokemonUrl={pokemon.url}
                         addToPokedex={addToPokedex}
                     />)
-
                 )}
             </Flex>
         </div>

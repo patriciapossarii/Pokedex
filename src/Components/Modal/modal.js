@@ -53,7 +53,6 @@ export function ModalPage() {
                                 O Pokémon foi removido da sua Pokedéx
                             </ModalBody>
                         </>
-
                     }
                 </ModalContent>
             </Modal>

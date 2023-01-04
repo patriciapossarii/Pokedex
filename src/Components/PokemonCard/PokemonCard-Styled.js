@@ -10,8 +10,6 @@ export const Container = styled.div`
   position: relative;
   margin: 40px;
   color: #ffffff;
-
-
 `;
 
 export const PokemonNumber = styled.p`

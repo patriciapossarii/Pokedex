@@ -11,18 +11,10 @@ import { ModalPage } from "../Modal/modal";
 const Header = (props) => {
   const { isOnPokedexPage, isOnPokemonDetailPage, isOnPokemonListPage, pokemon, isOnPageDontFound } = props
   const navigate = useNavigate()
-
-
   const context = useContext(GlobalContext)
   const { removeFromPokedex, isOpen, setIsOpenDel, isOpenDel } = context;
 
-
- 
-
   return (
-
-
-
     <Flex>
       {isOnPokemonListPage &&
         <Flex display={"flex"} justifyItems={"center"} alignItems={'center'} h={"160px"}>
@@ -31,7 +23,6 @@ const Header = (props) => {
               position={"absolute"}
               src={logotipo} w={"307px"} h={"113px"}
               top={"21px"} left={"566px"} />
-
           </Box>
           <Box>
             <Button
@@ -52,32 +43,28 @@ const Header = (props) => {
               position={"absolute"}
               src={logotipo} w={"307px"} h={"113px"}
               top={"21px"} left={"566px"} />
-
           </Box>
           <Box>
-          <Image src={goBack}
-            position={"absolute"}
-            left={"40px"} right={"37.54%"}
-            top={"110px"} bottom={"20.83%"}></Image>
-          <Link onClick={() => goToPokemonsListPage(navigate)}
-            position={"absolute"}
-            w={"210px"} h={"36px"}
-            left={"62px"} top={"100px"}
-            fontFamily={"Poppins"} fontStyle={"normal"}
-            fontWeight={"700"} fontSize={"24px"}
-            lineHeight={"36px"}
-            textDecorationLine={"underline"}
-          >
-            Todos Pokémons</Link>
+            <Image src={goBack}
+              position={"absolute"}
+              left={"40px"} right={"37.54%"}
+              top={"110px"} bottom={"20.83%"}></Image>
+            <Link onClick={() => goToPokemonsListPage(navigate)}
+              position={"absolute"}
+              w={"210px"} h={"36px"}
+              left={"62px"} top={"100px"}
+              fontFamily={"Poppins"} fontStyle={"normal"}
+              fontWeight={"700"} fontSize={"24px"}
+              lineHeight={"36px"}
+              textDecorationLine={"underline"}
+            >
+              Todos Pokémons</Link>
           </Box>
         </Flex>}
 
 
-
-
       {isOnPokedexPage &&
         <Flex flex={"row"} alignItems='center' w={"1440px"} h={"160px"}>
-
           <Image src={goBack}
             position={"absolute"}
             left={"40px"} right={"37.54%"}
@@ -92,8 +79,6 @@ const Header = (props) => {
             textDecorationLine={"underline"}
           >
             Todos Pokémons</Link>
-
-
           <Box >
             <Heading >
               <Image
@@ -105,40 +90,35 @@ const Header = (props) => {
         </Flex>}
 
 
-
       {isOnPokemonDetailPage &&
         <Flex display={"flex"} alignItems='center' w={"1440px"} h={"160px"}>
           <Box>
-          <Image src={goBack}
-            position={"absolute"}
-            left={"40px"} right={"37.54%"}
-            top={"110px"} bottom={"20.83%"}></Image>
-          <Link onClick={() => goToPokemonsListPage(navigate)}
-            position={"absolute"}
-            w={"210px"} h={"36px"}
-            left={"62px"} top={"100px"}
-            fontFamily={"Poppins"} fontStyle={"normal"}
-            fontWeight={"700"} fontSize={"24px"}
-            lineHeight={"36px"}
-            textDecorationLine={"underline"}
-          >
-            Todos Pokémons</Link>
-            </Box>
-
+            <Image src={goBack}
+              position={"absolute"}
+              left={"40px"} right={"37.54%"}
+              top={"110px"} bottom={"20.83%"}></Image>
+            <Link onClick={() => goToPokemonsListPage(navigate)}
+              position={"absolute"}
+              w={"210px"} h={"36px"}
+              left={"62px"} top={"100px"}
+              fontFamily={"Poppins"} fontStyle={"normal"}
+              fontWeight={"700"} fontSize={"24px"}
+              lineHeight={"36px"}
+              textDecorationLine={"underline"}
+            >
+              Todos Pokémons</Link>
+          </Box>
           <Box>
             <Image
               position={"absolute"}
               src={logotipo} w={"307px"} h={"113px"}
               top={"21px"} left={"566px"} />
-
           </Box>
-
           <Box>
             <Button bg={"#FF6262"} color={"white"}
               w={"226px"} h={"57px"}
               marginTop={"51px"} marginLeft={"1174px"}
               fontSize={"24px"}
-
               onClick={() => {
                 removeFromPokedex(pokemon)
                 setIsOpenDel(true)
@@ -147,9 +127,7 @@ const Header = (props) => {
 
             {isOpenDel ? <ModalPage></ModalPage> : <></>}
           </Box>
-
         </Flex>}
-
 
       {isOpen ? <ModalPage></ModalPage> : <></>}
     </Flex>
