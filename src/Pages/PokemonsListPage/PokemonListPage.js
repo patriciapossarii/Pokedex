@@ -23,7 +23,7 @@ const PokemonListPage = () => {
     const fetchAllPokemons = () => {
         axios.get(`${BASE_URL}api/v2/pokemon?limit=20`)
             .then((resp) => {
-                console.log("results",resp.data.results)
+                console.log("results", resp.data.results)
                 setPokemons(resp.data.results)
 
             })
@@ -32,39 +32,23 @@ const PokemonListPage = () => {
             })
     }
 
-
-
     useEffect(() => {
         fetchAllPokemons()
-        
+
     }, [])
 
 
 
-   
     return (
-
-
         <div>
             <Header
                 isOnPokemonListPage={true} />
             Hi! I'm PokemonListPage
-            
-            <Flex  display={"flex"} alignItems={"center"} justifyContent={"space-evenly"} 
-             gap={"40px"} wrap={"wrap"} bg={"#5E5E5E"} position={"relative"}>
-                
-
-
+            <Flex display={"flex"} alignItems="flex-start" gap={"20px"} wrap={"wrap"}
+            bg={"#5E5E5E"}>
                 {pokemons.map((pokemon, index) => {
-
-                    return <Box><PokemonCard key={index} pokemon={pokemon}
-                    
-                    />
-                    </Box>
-
+                    return <PokemonCard key={index} pokemon={pokemon} />
                 })}
-
-
             </Flex>
         </div>
     )
