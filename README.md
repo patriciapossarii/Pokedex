@@ -1,70 +1,90 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# Projeto React e API's
 
-In the project directory, you can run:
 
-### `npm start`
+![PokeApi](./src/assets/logo.svg)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Índice
+> <a href="#tecnologias"> Tecnologias utilizadas</a>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+> <a href="#funcionalidades"> Funcionalidades do projeto</a>
 
-### `npm test`
+><a href="#layout"> Layout</a>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+><a href="#rodar"> Como rodar este projeto?</a>
 
-### `npm run build`
+## Tecnologias utilizadas
+- React
+- Router
+- Styled-components
+- Design Systems (Chakra)
+- React Context
+- Estado Global
+- Axios
+- JavaScript
+- CSS
+- HTML
+- Favicon
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Funcionalidades do projeto
+O site tem 4 páginas, sendo:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+ - **PokemonListPage** 
+    - Mostra uma lista de Pokemons
+   - Cada Pokemon é representado por um Card
+   - Em cada card de Pokemon tem um botão para adicioná-lo à Pokedex e um outro botão para acessar os detalhes do Pokemon;
+   - O Header dessa página tem um botão para acessar a página da Pokedex
 
-### `npm run eject`
+ - **PokedexPage** 
+    - Renderizar a lista de pokémons adicionados na pokedex;
+	- Em cada card de Pokemon possui um botão para removê-lo da Pokedex e um outro botão para acessar os detalhes do Pokemon.
+	- Header possui um botão para voltar para a Home
+	- Não é possível adicionar o mesmo Pokemon duas vezes na Pokedex
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- **PokemonDetailPage** 
+	- Mostra os detalhes do Pokemon selecionado, com informações descritas
+	- Header possui um botão para adicionar ou remover da Pokedex e outro para voltar a página home.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **notFoundPage** 
+ - Mostra uma imagem de um pokemon e a mensagem "Oh,no! Página não encontrada". Aprensentado também ao usuário para retornar a página principal (pokemonListPage).
+ 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+##  Como rodar este projeto?
+-  Crie um fork deste projeto.
+-  Clone sua PRÓPRIA versão do repositório
+<p>Assim que baixar o projeto em seu computador, abre-o com o VSCode e execute os seguintes comandos:</p>
+<p>npm install </p>
+<p>npm install axios </p>
+<p>npm install styled-components </p>
+<p>npm install react-router-dom </p>
+<p>npm i @chakra-ui/react @emotion/react @emotion/styled framer-motion </p>
+<p>npm run start </p>
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Layout
+Pokelist Page
+![Pokelist](./src//assets/Pokelist.PNG)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Pokemon Detail Page
+![Detail Page](./src//assets/DetailPage.PNG)
 
-### Code Splitting
+Pokedex
+![Pokedex](./src//assets/Pokedex.PNG)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Capture Pokemon
+![Capture Pokemon](./src//assets/CapturePokemon.PNG)
 
-### Analyzing the Bundle Size
+Delete Pokemon Of Pokedex From Detail Page
+![Delete Pokemon Of Pokedex From Detail Page](./src//assets/RemovePokemonOfPokedexFromDetailPage.PNG)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Delete Pokemon From Pokedex
+![Delete Pokemon From Pokedex](./src//assets/ExcluirPokemon.PNG)
 
-### Making a Progressive Web App
+Page Dont Found
+![Page Dont Found](./src//assets//PageDontFound.PNG)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

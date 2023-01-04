@@ -115,7 +115,7 @@ const Header = (props) => {
               top={"21px"} left={"566px"} />
           </Box>
           <Box>
-            <Button bg={"#FF6262"} color={"white"}
+            <Button zIndex={"popover"} bg={"#FF6262"} color={"white"}
               w={"226px"} h={"57px"}
               marginTop={"51px"} marginLeft={"1174px"}
               fontSize={"24px"}

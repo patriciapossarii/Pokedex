@@ -75,9 +75,9 @@ const PokemonDetailPage = () => {
             <Flex bg={"#5E5E5E"} bgPosition={"bottom"}
                 minH={"1174px"} width={"100%"}
                 display={"flex"} alignItems={"center"} justifyContent={"center"}>
-                     <Pokeball src={pokelogo} />
+                   
                 <TextPoke>Detalhes</TextPoke>
-
+                <Pokeball src={pokelogo} />
                 <Flex display={"flex"} minW={"1389.14px"}
                     minH={"663px"} maxH={"663px"}
                     top={"56px"} marginLeft={"25px"} borderRadius={"37.8857px"}
