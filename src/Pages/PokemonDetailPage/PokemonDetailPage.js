@@ -1,51 +1,40 @@
 import Header from "../../Components/Header/Header"
-import {
-    Pokeball, Container, ContPokemonFront, Containerpokes,
-    ImgPokemonFront, ContPokemonBack, ContainerStats, ContainerMoves,
-    ContainerPrincipal, TextPoke, PokemonNumber, PokemonName, PokemonType, TypesContainer, Pokemon
-} from "./PokemonDetailPage-Styled"
+import { ImgPokemonFront, TextPoke, PokemonNumber, PokemonName, PokemonType, TypesContainer, Pokemon, PokeballCard, Pokeball } from "./PokemonDetailPage-Styled"
 import { BASE_URL } from "../../constants/url"
 import { useState, useEffect } from "react"
 import axios from "axios"
-import { getColors } from "../../utils/ReturnCardColor"
-import { goToPokemonDetailPage } from "../../Router/coordinator"
 import { useParams } from "react-router-dom"
 import pokelogo from "../../assets/pokeLogDetails.svg"
-import { Flex, Box, Progress, Stack, Text, Heading, Divider } from "@chakra-ui/react"
+import { Flex, Box, Progress, Stack, Text, } from "@chakra-ui/react"
 import { getTypes } from "../../utils/ReturnPokemonType"
-
+import { getColors } from "../../utils/ReturnCardColor"
+import pokecard from "../../assets/pngwing.svg"
 
 const PokemonDetailPage = () => {
     const [pokemonsTypes, setPokemonsTypes] = useState([])
     const { idPokemon } = useParams()
     const [pokemonsStats, setPokemonsStats] = useState([])
     const [pokemonsMoves, setPokemonsMoves] = useState([])
-
-
-
+    const [pokemon, setPokemon] = useState({});
+    const [pokemonName, setPokemonName] = useState("")
 
     const IMAGE = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${idPokemon}.png`
-
     const imagePokemonBack = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/${idPokemon}.png`
-
     const imagePokemonFront = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${idPokemon}.png`
 
-
     const fetchPokemonType = () => {
-        axios.get(`${BASE_URL}api/v2/pokemon/${idPokemon}`)
+        axios.get(`${BASE_URL}${idPokemon}`)
             .then((resp) => {
                 setPokemonsTypes(resp.data.types)
                 setPokemonsStats(resp.data.stats)
-
+                setPokemon(resp.data)
                 setPokemonsMoves(resp.data.moves)
+                setPokemonName(resp.data.name)
             })
             .catch((error) => {
                 console.log(error)
             })
     }
-
-    //console.log("Movimentos", pokemonsMoves[1]?.move?.name.replace(/-/, " ").charAt(0).toUpperCase() + pokemonsMoves[1]?.move?.name.replace(/-/, " ").slice(1).split(' ').join(' '))
-    //console.log("nome atake", pokemonsStats[1].stat.name ,"valor atak", pokemonsStats[0].base_stat)
 
 
     let moviments = []
@@ -56,7 +45,6 @@ const PokemonDetailPage = () => {
         let sp = moviment.split("-")
         for (var i in sp) {
             sp[i] = sp[i].charAt(0).toUpperCase() + sp[i].slice(1)
-
         }
         return sp.join(" ")
     }
@@ -77,27 +65,23 @@ const PokemonDetailPage = () => {
         fetchPokemonType()
     }, [])
 
-    let cardColor = getColors(pokemonsTypes[0]?.type?.name)
-
-
-
-
 
     return (
-
-
         <div>
             <Header
-                isOnPokemonDetailPage={true} />
-            <Flex bgImg={pokelogo} bg={"#5E5E5E"} bgPosition={"bottom"}
-                minH={"1174px"}
+                isOnPokemonDetailPage={true}
+                pokemon={pokemon}
+            />
+            <Flex bg={"#5E5E5E"} bgPosition={"bottom"}
+                minH={"1174px"} width={"100%"}
                 display={"flex"} alignItems={"center"} justifyContent={"center"}>
+                   
                 <TextPoke>Detalhes</TextPoke>
-
+                <Pokeball src={pokelogo} />
                 <Flex display={"flex"} minW={"1389.14px"}
                     minH={"663px"} maxH={"663px"}
-                    marginTop={"188px"} marginLeft={"25px"} borderRadius={"37.8857px"}
-                    bg={cardColor}
+                    top={"56px"} marginLeft={"25px"} borderRadius={"37.8857px"}
+                    bg={getColors(pokemonsTypes[0]?.type?.name)}
 
                 >
 
@@ -120,8 +104,8 @@ const PokemonDetailPage = () => {
                         <Text fontFamily={"Inter"} fontStyle={"normal"} fontSize={"24px"} lineHeight={"29px"}>Base stats</Text>
 
                         <Flex display={"flex"} direction={"row"} marginTop={"45px"} >
-                        {pokemonsStats.map((pokemonStat,index)=>{})}
-                            
+
+
                             <Stack w={"70px"} spacing={4}>
                                 <p size='lg'>HP</p>
                                 <p size='lg'>Attack</p>
@@ -131,7 +115,7 @@ const PokemonDetailPage = () => {
                                 <p>Speed</p>
                                 <p> Total </p>
                             </Stack>
-                            
+
                             <Stack w={"45px"} spacing={4}>
                                 <p>{pokemonsStats[0]?.base_stat}</p>
                                 <p>{pokemonsStats[1]?.base_stat}</p>
@@ -157,7 +141,7 @@ const PokemonDetailPage = () => {
                     <Flex display={"flex"} direction={"column"} marginLeft={"68px"}>
                         <Box>
                             <PokemonNumber>  #{idPokemon}</PokemonNumber>
-                            <PokemonName>Bulbasaur</PokemonName>
+                            <PokemonName>{pokemonName?.charAt(0).toUpperCase() + pokemonName?.slice(1)}</PokemonName>
                             <TypesContainer>
                                 {pokemonsTypes.map((pokemonType, index) => {
                                     return <PokemonType key={index} src={getTypes(pokemonType.type.name)} />;
@@ -165,8 +149,9 @@ const PokemonDetailPage = () => {
                             </TypesContainer>
                         </Box>
 
-
-                        <Box w={"292px"} h={"453px"} bg={"#FFFFFF"} marginTop={"7px"} borderRadius={"8px"} >
+                        <PokeballCard src={pokecard} />
+                        <Box zIndex={"sticky"}  w={"292px"} h={"453px"} bg={"#FFFFFF"} marginTop={"7px"} borderRadius={"8px"} >
+                        
                             <Text w={"87px"} h={"29px"} marginLeft={"18px"} marginTop={"18px"}
                                 fontFamily={"Inter"} fontStyle={"normal"} fontWeight={"800"}
                                 fontSize={"24px"} lineHeight={"29px"}> Moves: </Text>
@@ -177,20 +162,21 @@ const PokemonDetailPage = () => {
                                     return <Box bg={"#ECECEC"} borderStyle={"dashed"} borderColor={"#dbdbdb"}
                                         borderWidth={"2px"} padding={"10px"} gap={"10px"} borderRadius={"12px"}>{moviment}
                                     </Box>
-                                })}
-                            </Flex>
-                        </Box>
 
+                                })}
+
+                            </Flex>
+
+                        </Box>
 
                     </Flex >
 
                     <Flex >
+                       
                         <Pokemon src={IMAGE} />
+                       
                     </Flex>
-
-
                 </Flex>
-
             </Flex>
         </div>
     )
